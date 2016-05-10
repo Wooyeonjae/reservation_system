@@ -61,10 +61,10 @@
                 android:layout_height="match_parent"/>
 
             <TimePicker
-                android:id="@+id/time"
+                android:id="@+id/time_pick"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"/>
+                android:timePickerMode="spinner"/>
 
         </FrameLayout>
     </LinearLayout>
@@ -80,9 +80,10 @@
             android:layout_height="wrap_content"
             android:text="@string/but_done"/>
         <TextView
-            android:id="@+id/test_result"
+            android:id="@+id/time_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
 
     </LinearLayout>
 
