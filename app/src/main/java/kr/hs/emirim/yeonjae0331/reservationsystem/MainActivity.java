@@ -1,5 +1,7 @@
 package kr.hs.emirim.yeonjae0331.reservationsystem;
 
+import android.graphics.Color;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,8 @@ import android.widget.Chronometer;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,5 +56,32 @@ public class MainActivity extends AppCompatActivity {
                 timePic.setVisibility(View.VISIBLE);
             }
         });
+
+        butStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chrono.setBase(SystemClock.elapsedRealtime());
+                chrono.start();
+                chrono.setTextColor(Color.RED); //크로노미터에 나오는 문자의 색상 바꾸기
+            }
+        });
+
+        butDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chrono.stop();
+                chrono.setTextColor(Color.BLUE); //크로노미터에 나오는 문자의 색상 바꾸기
+                Calendar cal=Calendar.getInstance();
+                cal.setTimeInMillis(calView.getDate());
+                int year=cal.get(Calendar.YEAR);
+                int month=cal.get(Calendar.MONTH)+1;
+                int date=cal.get(Calendar.DATE);
+               // int hour=timePic.getHour();
+               // int minute=timePic.getMinute();
+                String dateAndTime=year+"년 "+month+"월 "+date+"일 ";//+hour+"시 "+minute+"분";
+                textResult.setText(dateAndTime);
+            }
+        });
+
     }
 }
